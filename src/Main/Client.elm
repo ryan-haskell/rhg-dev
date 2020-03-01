@@ -2,10 +2,12 @@ module Main.Client exposing (main)
 
 import Browser
 import Browser.Navigation as Nav
-import Html exposing (..)
 import Pages
+import Process
 import Route
 import Ssr.Document
+import Task
+import Transition exposing (Transition)
 import Url
 
 
@@ -32,12 +34,13 @@ type alias Flags =
 type alias Model =
     { key : Nav.Key
     , url : Url.Url
+    , transition : Transition
     }
 
 
 init : Flags -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
-init flags url key =
-    ( Model key url
+init _ url key =
+    ( Model key url Transition.Visible
     , Cmd.none
     )
 
@@ -49,6 +52,7 @@ init flags url key =
 type Msg
     = UrlRequested Browser.UrlRequest
     | UrlChanged Url.Url
+    | FadeIn Url.Url
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -57,19 +61,35 @@ update msg model =
         UrlRequested urlRequest ->
             case urlRequest of
                 Browser.Internal url ->
-                    ( model, Nav.pushUrl model.key (Url.toString url) )
+                    ( model
+                    , Nav.pushUrl model.key (Url.toString url)
+                    )
 
                 Browser.External href ->
-                    ( model, Nav.load href )
+                    ( model
+                    , Nav.load href
+                    )
 
         UrlChanged url ->
-            ( { model | url = url }
+            ( { model | transition = Transition.Invisible }
+            , delay 250 (FadeIn url)
+            )
+
+        FadeIn url ->
+            ( { model | url = url, transition = Transition.Visible }
             , Cmd.none
             )
 
 
+delay : Float -> msg -> Cmd msg
+delay ms msg =
+    Process.sleep ms
+        |> Task.map (\_ -> msg)
+        |> Task.perform identity
+
+
 subscriptions : Model -> Sub Msg
-subscriptions model =
+subscriptions _ =
     Sub.none
 
 
@@ -81,5 +101,5 @@ view : Model -> Browser.Document Msg
 view model =
     model.url
         |> Route.fromUrl
-        |> Pages.view
+        |> Pages.view { transition = model.transition }
         |> Ssr.Document.toDocument

@@ -1,8 +1,30 @@
-module Components exposing (footer, navbar)
+module Components exposing
+    ( footer
+    , layout
+    , navbar
+    )
 
 import Route
 import Ssr.Attributes exposing (class, href)
 import Ssr.Html as Html exposing (..)
+import Transition exposing (Transition)
+
+
+layout : { transition : Transition } -> List (Html msg) -> Html msg
+layout options content =
+    div [ class "layout pad-1 container" ]
+        [ navbar
+        , div
+            [ case options.transition of
+                Transition.Visible ->
+                    class "page page--visible"
+
+                Transition.Invisible ->
+                    class "page"
+            ]
+            content
+        , footer
+        ]
 
 
 navbar : Html msg

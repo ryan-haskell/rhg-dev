@@ -3,7 +3,8 @@ module Ssr.Html exposing
     , text, node, div
     , header, footer
     , a
-    , h1, h2, h3, h4, h5, h6, p
+    , h1, h2, h3, h4, h5, h6
+    , p, ul, ol, li
     , toString, toHtml
     )
 
@@ -17,7 +18,9 @@ module Ssr.Html exposing
 
 @docs a
 
-@docs h1, h2, h3, h4, h5, h6, p
+@docs h1, h2, h3, h4, h5, h6
+
+@docs p, ul, ol, li
 
 @docs toString, toHtml
 
@@ -85,6 +88,21 @@ a =
 p : List (Attribute msg) -> List (Html msg) -> Html msg
 p =
     node "p"
+
+
+ul : List (Attribute msg) -> List (Html msg) -> Html msg
+ul =
+    node "ul"
+
+
+ol : List (Attribute msg) -> List (Html msg) -> Html msg
+ol =
+    node "ol"
+
+
+li : List (Attribute msg) -> List (Html msg) -> Html msg
+li =
+    node "li"
 
 
 h1 : List (Attribute msg) -> List (Html msg) -> Html msg

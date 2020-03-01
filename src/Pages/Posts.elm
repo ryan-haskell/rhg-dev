@@ -1,36 +1,22 @@
 module Pages.Posts exposing (view)
 
-import Components
-import Ssr.Attributes exposing (class)
+import Ssr.Attributes exposing (class, href)
 import Ssr.Document exposing (Document)
 import Ssr.Html exposing (..)
-
-
-
--- import Ssr.Router exposing (Page)
--- type alias Model =
---     ()
--- type alias Msg =
---     Never
--- page : Page () Model Msg
--- page =
---     Ssr.Router.static
---         { view = view
---         }
 
 
 view : Document msg
 view =
     { meta =
-        { title = "rhg.dev"
-        , description = "i have no idea what I'm doing."
+        { title = "posts | rhg.dev"
+        , description = "the latest and greatest."
         , image = "https://avatars2.githubusercontent.com/u/6187256"
         }
     , body =
-        [ div [ class "container" ]
-            [ Components.navbar
-            , h1 [] [ text "Posts" ]
-            , Components.footer
+        [ h1 [] [ text "Posts" ]
+        , ul []
+            [ li [] [ p [] [ a [ href "/posts/how-you-be" ] [ text "how you be" ] ] ]
+            , li [] [ p [] [ a [ href "/posts/welcome-doods" ] [ text "welcome doods" ] ] ]
             ]
         ]
     }

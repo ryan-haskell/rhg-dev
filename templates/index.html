@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.png" type="image/x-icon">
   <title>{{meta.title}}</title>
   <meta name="description" content="{{meta.description}}">
   <!-- OG Tags -->
@@ -19,9 +20,9 @@
 </head>
 <body>
   {{content}}
-  <script src="/elm.client.js"></script>
+  <script defer async src="/elm.client.js"></script>
   <script>
-    Elm.Main.Client.init()
+    window.addEventListener('load', () => Elm.Main.Client.init())
   </script>
 </body>
 </html>

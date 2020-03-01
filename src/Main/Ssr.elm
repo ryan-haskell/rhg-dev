@@ -3,6 +3,7 @@ port module Main.Ssr exposing (main)
 import Pages
 import Route
 import Ssr.Html as Ssr
+import Transition
 
 
 port render : Page -> Cmd msg
@@ -38,7 +39,9 @@ viewPage : Flags -> Page
 viewPage { config, path } =
     let
         view =
-            Pages.view (Route.fromPath config path)
+            Pages.view
+                { transition = Transition.Visible }
+                (Route.fromPath config path)
     in
     { meta = view.meta
     , path = path
