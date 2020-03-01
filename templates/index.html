@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <title>{{meta.title}}</title>
+  <meta name="description" content="{{meta.description}}">
+  <!-- OG Tags -->
+  <meta property="og:title" content="{{meta.title}}">
+  <meta property="og:description" content="{{meta.description}}">
+  <meta property="og:image" content="{{meta.image}}">
+  <meta property="og:url" content="{{config.baseUrl}}{{path}}">
+  <!-- Twitter Tags -->
+  <meta name="twitter:title" content="{{meta.title}}">
+  <meta name="twitter:description" content="{{meta.description}}">
+  <meta name="twitter:image" content=" {{meta.image}}">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  {{content}}
+  <script src="/elm.client.js"></script>
+  <script>
+    Elm.Main.Client.init()
+  </script>
+</body>
+</html>
