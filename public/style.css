@@ -51,6 +51,7 @@ h1, h2, h3, h4, h5, h6 {
   background: #faf8f8;
   position: relative;
   padding-top: 1em;
+  min-height: 200vh;
 }
 
 .page--visible {
