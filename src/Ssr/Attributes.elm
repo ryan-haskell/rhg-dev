@@ -1,6 +1,6 @@
 module Ssr.Attributes exposing
     ( Attribute, map
-    , attribute, class, style, href
+    , attribute, class, style, href, target
     , on, onClick, onInput
     , toString, toHtmlAttribute
     )
@@ -9,7 +9,7 @@ module Ssr.Attributes exposing
 
 @docs Attribute, map
 
-@docs attribute, class, style, href
+@docs attribute, class, style, href, target
 
 @docs on, onClick, onInput
 
@@ -60,6 +60,11 @@ style prop value =
 href : String -> Attribute msg
 href =
     attribute "href"
+
+
+target : String -> Attribute msg
+target =
+    attribute "target"
 
 
 

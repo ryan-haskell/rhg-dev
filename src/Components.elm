@@ -5,7 +5,7 @@ module Components exposing
     )
 
 import Route
-import Ssr.Attributes exposing (class, href)
+import Ssr.Attributes exposing (class, href, target)
 import Ssr.Html as Html exposing (..)
 import Transition exposing (Transition)
 
@@ -33,18 +33,33 @@ navbar =
         link ( label, route ) =
             a [ class "link", href (Route.toPath route) ] [ text label ]
     in
-    header [ class "row justify-between" ]
-        [ a [ class "nav__brand link", href "/" ] [ text "rhg.dev" ]
-        , div [ class "row spacing-1" ]
+    header [ class "row space-between center-x" ]
+        [ a [ class "font--heading", href "/" ] [ text "rhg.dev" ]
+        , div [ class "row font--small spacing-1" ]
             (List.map link
                 [ ( "posts", Route.Posts )
                 ]
+                ++ List.map externalLink
+                    [ ( "github", "https://www.github.com/ryannhg" )
+                    , ( "twitter", "https://www.twitter.com/ryan_nhg" )
+                    ]
             )
         ]
 
 
+externalLink : ( String, String ) -> Html msg
+externalLink ( label, url ) =
+    a [ class "link link--external", target "_blank", href url ] [ text label ]
+
+
 footer : Html msg
 footer =
-    Html.footer []
-        [ text "Built by Ryan Haskell-Glatz, 2020"
+    Html.footer [ class "row center-x space-between pt-2 pb-1" ]
+        [ span [ class "font--small" ] [ text "built by Ryan Haskell-Glatz in 2020" ]
+        , div [ class "row spacing-1" ]
+            (List.map externalLink
+                [ ( "github", "https://www.github.com/ryannhg" )
+                , ( "twitter", "https://www.github.com/ryan_nhg" )
+                ]
+            )
         ]
