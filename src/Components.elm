@@ -30,20 +30,28 @@ layout options content =
 navbar : Html msg
 navbar =
     let
-        link ( label, route ) =
-            a [ class "link", href (Route.toPath route) ] [ text label ]
-    in
-    header [ class "row space-between center-x" ]
-        [ a [ class "font--heading", href "/" ] [ text "rhg.dev" ]
-        , div [ class "row font--small spacing-1" ]
-            (List.map link
+        links : List (Html msg)
+        links =
+            List.map link
                 [ ( "posts", Route.Posts )
                 ]
                 ++ List.map externalLink
                     [ ( "github", "https://www.github.com/ryannhg" )
                     , ( "twitter", "https://www.twitter.com/ryan_nhg" )
                     ]
-            )
+
+        link ( label, route ) =
+            a [ class "link", href (Route.toPath route) ] [ text label ]
+    in
+    div [ class "navbar" ]
+        [ header [ class "header row space-between center-x" ]
+            [ a [ class "font--heading", href "/" ] [ text "rhg.dev" ]
+            , div [ class "row font--small spacing-1" ] links
+            ]
+        , aside [ class "font--big aside column spacing-1 center-y" ]
+            [ a [ class "font--heading", href "/" ] [ text "rhg.dev" ]
+            , div [ class "column center-y font--small spacing-1" ] links
+            ]
         ]
 
 

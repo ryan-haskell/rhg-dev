@@ -1,7 +1,7 @@
 module Ssr.Html exposing
     ( Html, map
     , text, node, div
-    , header, footer
+    , header, main_, aside, footer
     , a, span
     , h1, h2, h3, h4, h5, h6
     , p, ul, ol, li
@@ -14,7 +14,7 @@ module Ssr.Html exposing
 
 @docs text, node, div
 
-@docs header, footer
+@docs header, main_, aside, footer
 
 @docs a, span
 
@@ -73,6 +73,16 @@ div =
 header : List (Attribute msg) -> List (Html msg) -> Html msg
 header =
     node "header"
+
+
+aside : List (Attribute msg) -> List (Html msg) -> Html msg
+aside =
+    node "aside"
+
+
+main_ : List (Attribute msg) -> List (Html msg) -> Html msg
+main_ =
+    node "main"
 
 
 footer : List (Attribute msg) -> List (Html msg) -> Html msg
