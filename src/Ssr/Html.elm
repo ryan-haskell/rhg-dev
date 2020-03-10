@@ -2,8 +2,10 @@ module Ssr.Html exposing
     ( Html, map
     , text, node, div
     , header, main_, aside, footer
-    , a, span
+    , a, span, strong, em
     , h1, h2, h3, h4, h5, h6
+    , pre, blockquote, code
+    , img, hr, br
     , p, ul, ol, li
     , toString, toHtml
     )
@@ -16,9 +18,13 @@ module Ssr.Html exposing
 
 @docs header, main_, aside, footer
 
-@docs a, span
+@docs a, span, strong, em
 
 @docs h1, h2, h3, h4, h5, h6
+
+@docs pre, blockquote, code
+
+@docs img, hr, br
 
 @docs p, ul, ol, li
 
@@ -98,6 +104,46 @@ a =
 span : List (Attribute msg) -> List (Html msg) -> Html msg
 span =
     node "span"
+
+
+strong : List (Attribute msg) -> List (Html msg) -> Html msg
+strong =
+    node "strong"
+
+
+em : List (Attribute msg) -> List (Html msg) -> Html msg
+em =
+    node "em"
+
+
+pre : List (Attribute msg) -> List (Html msg) -> Html msg
+pre =
+    node "pre"
+
+
+code : List (Attribute msg) -> List (Html msg) -> Html msg
+code =
+    node "code"
+
+
+img : List (Attribute msg) -> List (Html msg) -> Html msg
+img =
+    node "img"
+
+
+blockquote : List (Attribute msg) -> List (Html msg) -> Html msg
+blockquote =
+    node "blockquote"
+
+
+hr : List (Attribute msg) -> List (Html msg) -> Html msg
+hr =
+    node "hr"
+
+
+br : List (Attribute msg) -> List (Html msg) -> Html msg
+br =
+    node "br"
 
 
 p : List (Attribute msg) -> List (Html msg) -> Html msg

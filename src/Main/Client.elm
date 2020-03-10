@@ -3,6 +3,7 @@ module Main.Client exposing (main)
 import Browser
 import Browser.Navigation as Nav
 import Pages
+import Ports
 import Process
 import Route
 import Ssr.Document
@@ -77,7 +78,7 @@ update msg model =
 
         FadeIn url ->
             ( { model | url = url, transition = Transition.Visible }
-            , Cmd.none
+            , Ports.sendAfterNavigate
             )
 
 

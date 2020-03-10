@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/style.css">
   <link rel="icon" href="/favicon.png" type="image/x-icon">
+  <!-- CSS -->
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Nunito:400,800&display=swap">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-light.min.css">
+  <link rel="stylesheet" href="/style.css">
+  <!-- Meta Tags -->
   <title>{{meta.title}}</title>
   <meta name="description" content="{{meta.description}}">
   <!-- OG Tags -->
@@ -21,8 +25,20 @@
 <body>
   {{content}}
   <script defer async src="/elm.client.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+  <script defer async src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/elm.min.js"></script>
   <script>
-    window.addEventListener('load', () => Elm.Main.Client.init())
+    window.addEventListener('load', () => {
+      const app = Elm.Main.Client.init()
+      window.hljs.initHighlighting()
+      // Ports
+      app.ports.afterNavigate.subscribe(_ =>
+        setTimeout(_ => {
+          hljs.initHighlighting.called = false
+          window.hljs.initHighlighting()
+        }, 100)
+      )
+    })
   </script>
 </body>
 </html>

@@ -7,7 +7,7 @@
     "start": "npm install && npm run dev",
     "dev": "npm run build && npm run dev:build & npm run dev:server",
     "dev:build": "npm run dev:build:elm & npm run dev:build:generate & npm run dev:build:cp:public",
-    "dev:build:elm": "chokidar src -c 'npm run build:elm && npm run generate'",
+    "dev:build:elm": "chokidar src -c 'npm run build:elm && npm run generate || true'",
     "dev:build:generate": "chokidar templates -c 'npm run generate'",
     "dev:build:cp:public": "chokidar public -c 'npm run cp:public'",
     "dev:server": "serve dist",
