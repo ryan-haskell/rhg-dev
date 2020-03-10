@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 { font-size: 3rem; line-height: 0.9; }
 h3 { font-size: 1.5rem; line-height: 1; }
 
-p, ul, ol, blockquote, pre, a {
+p, ul, ol, blockquote {
   line-height: 1.2;
   margin: 0;
   opacity: 0.75;
@@ -126,7 +126,7 @@ p, ul, ol, blockquote, pre, a {
 
 /* effects */
 .link {
-  transition: opacity 200ms ease-in, background 200ms ease-in;
+  transition: background-position 200ms ease-in;
   background-image: linear-gradient(rgba(255, 127, 80, 0.5),rgba(255, 127, 80, 0.5));
   background-repeat: no-repeat;
   background-position: 0 0.9em;
@@ -138,8 +138,7 @@ p, ul, ol, blockquote, pre, a {
 }
 
 .link:hover {
-  background-position: 0 1em;
-  opacity: 1;
+  background-position: 0 1.15em;
 }
 
 pre {
@@ -147,6 +146,7 @@ pre {
   line-height: 1.3;
   font-size: 0.75rem;
   margin: 1rem 0;
+  margin-bottom: 2rem;
   overflow-x: auto;
 }
 
@@ -159,17 +159,19 @@ pre code {
   padding: 0 !important;
 }
 
+.markdown pre {
+  margin-bottom: 2rem !important;
+}
 
 .aside {
   position: fixed;
   top: 50%;
-  left: calc(50vw - 420px);
+  left: calc(50vw - 400px - 48px);
   transform: translate(-50%, -75%);
   visibility: hidden;
-  font-weight: 800;
 }
 
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 1120px) {
   html {
     font-size: 25px;
   }

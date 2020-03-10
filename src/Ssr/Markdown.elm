@@ -13,7 +13,7 @@ markdown content =
         |> Result.mapError (always "Couldn't parse.")
         |> Result.andThen (Markdown.Parser.render renderer)
         |> Result.withDefault []
-        |> Html.div [ Attr.class "column spacing-1" ]
+        |> Html.div [ Attr.class "markdown column spacing-1" ]
 
 
 renderer : Markdown.Parser.Renderer (Html msg)

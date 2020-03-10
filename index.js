@@ -10,7 +10,7 @@ const start = () =>
       flags: { config, path: route }
     })
     
-    app.ports.render.subscribe((data) => {
+    app.ports.render.subscribe(data => {
       const template = fs.readFileSync(
         path.join(__dirname, 'templates', 'index.html'),
         { encoding: 'utf8' }
