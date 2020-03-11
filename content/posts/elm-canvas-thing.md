@@ -1,7 +1,7 @@
 ---
 title: Elm canvas thing
 date: 1564952500784
-description: My 2D hex game prototype written with Elm.
+description: my 2D game prototype written in Elm.
 image: https://raw.githubusercontent.com/ryannhg/elm-canvas-things/master/screenshot.png
 tags: [ elm, games, rpg ]
 ---
@@ -9,6 +9,8 @@ tags: [ elm, games, rpg ]
 I want to make an RPG in Elm, so I got started making simple prototypes like this:
 
 It's pretty fun building games in Elm, because the compiler is so freaking chill.
+
+Play it in fullscreen over here: [https://elm-canvas-demo.netlify.com](https://elm-canvas-demo.netlify.com)
 
 This post is just a breakdown of some of the stuff I added in.
 
@@ -89,6 +91,4 @@ As you can see, the 2nd and 3rd columns (index 1 and 2) are a bit longer. That's
 
 ### wanna check it out?
 
-Play it in fullscreen over here: https://elm-canvas-demo.netlify.com
-
-Or checkout the source code in this repo: https://github.com/ryannhg/elm-canvas-things
+Or checkout the source code in this repo: [https://github.com/ryannhg/elm-canvas-things](https://github.com/ryannhg/elm-canvas-things)

@@ -9,7 +9,6 @@ import Ssr.Html as Html exposing (Html)
 markdown : String -> Html msg
 markdown content =
     Markdown.Parser.parse content
-        |> Debug.log "RESULT"
         |> Result.mapError (\_ -> "Couldn't parse.")
         |> Result.andThen (Markdown.Parser.render renderer)
         |> Result.withDefault []

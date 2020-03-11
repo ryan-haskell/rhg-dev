@@ -74,9 +74,16 @@ h2 { opacity: 0.6; line-height: 1; font-weight: 400; margin-top: 0.5rem; }
 h3 { font-size: 1.5rem; line-height: 1; }
 
 p, ul, ol, blockquote {
+  width: 100%;
   line-height: 1.2;
   margin: 0;
-  opacity: 0.75;
+  color: #445;
+}
+
+img {
+  width: 100%;
+  image-rendering: pixelated;
+  
 }
 
 .font--heading { font-weight: 800; }
