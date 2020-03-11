@@ -18,10 +18,16 @@ view =
                 [ h1 [] [ text "posts" ]
                 , h2 [] [ text "i can read ", em [] [ text "and" ], text " write!" ]
                 ]
-            , ul [ class "column spacing-half" ]
-                [ li [] [ p [] [ a [ href "/posts/code-generation" ] [ text "code generation" ] ] ]
-                , li [] [ p [] [ a [ href "/posts/elm-canvas-thing" ] [ text "elm canvas thing" ] ] ]
-                ]
+            , ul [ class "column spacing-half" ] <|
+                List.map viewLink
+                    [ ( "code-generation", "code generation" )
+                    , ( "elm-canvas-thing", "elm canvas thing" )
+                    ]
             ]
         ]
     }
+
+
+viewLink : ( String, String ) -> Html msg
+viewLink ( slug, label ) =
+    li [] [ p [] [ a [ class "link", href ("/posts/" ++ slug) ] [ text label ] ] ]
