@@ -51,7 +51,7 @@ renderer =
     , link =
         \{ title, destination } ->
             (if String.startsWith "http" destination then
-                Html.a [ Attr.class "link link--external", Attr.href destination, Attr.target "_blank" ]
+                Html.a [ Attr.class "link link--external", Attr.href destination, Attr.target "_blank", Attr.rel "noopener" ]
 
              else
                 Html.a [ Attr.class "link", Attr.href destination ]
