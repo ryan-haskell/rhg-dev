@@ -12,11 +12,8 @@ and avoided JS as much as humanly possible.
 when someone made a request to a website:
 
 1. The server saw a path like `/posts/hello`
-
 1. It fetched all the content from a database or something
-
 1. It rendered the HTML
-
 1. It sent it back to the user
 
 So before *any* javascript even ran, you'd get something like this back:
@@ -41,11 +38,8 @@ do the following sequence of steps:
 
 
 1. The server saw a path like `/posts/hello`
-
 1. It fetched all the content from a database or something
-
 1. It sent that raw data to the user
-
 1. JavaScript rendered the HTML
 
 And now, before any scripts ran on the page, your browser gets something like this:
