@@ -1,7 +1,5 @@
-module Content exposing
-    ( Post
-    , viewPost
-    , posts
+module Generated.Content exposing
+    ( viewPost
     )
 
 {{imports}}
@@ -14,13 +12,3 @@ viewPost slug =
 {{conditions}}
         _ ->
             Nothing
-
-type alias Post =
-    { slug : String
-    , title : String
-    , date : Int
-    }
-
-posts : List Post
-posts =
-{{posts}}

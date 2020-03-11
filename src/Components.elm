@@ -2,11 +2,12 @@ module Components exposing
     ( footer
     , layout
     , navbar
+    , postListing
     , posts
     )
 
-import Content
 import DateFormat
+import Generated.Posts exposing (Post)
 import Route
 import Ssr.Attributes exposing (class, href, rel, style, target)
 import Ssr.Html as Html exposing (..)
@@ -90,9 +91,7 @@ externalLinks =
 posts : Maybe Int -> Html msg
 posts maximum =
     div [ class "column spacing-1" ]
-        (Content.posts
-            |> List.sortBy .date
-            |> List.reverse
+        (Generated.Posts.posts
             |> (\items ->
                     case maximum of
                         Just max ->
@@ -101,17 +100,15 @@ posts maximum =
                         Nothing ->
                             items
                )
-            |> List.map viewLink
+            |> List.map postListing
         )
 
 
-viewLink : Content.Post -> Html msg
-viewLink { slug, title, date } =
-    div []
-        [ p []
-            [ h4 [] [ a [ class "link", href ("/posts/" ++ slug) ] [ text title ] ]
-            , p [ class "font--small", style "opacity" " 0.75" ] [ text (formatDate date) ]
-            ]
+postListing : Post -> Html msg
+postListing { slug, title, date } =
+    p []
+        [ h4 [] [ a [ class "link", href ("/posts/" ++ slug) ] [ text title ] ]
+        , p [ class "font--small", style "opacity" " 0.75" ] [ text (formatDate date) ]
         ]
 
 

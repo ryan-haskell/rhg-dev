@@ -1,6 +1,6 @@
 module Pages.Post exposing (view)
 
-import Content
+import Generated.Content as Content
 import Ssr.Attributes exposing (class)
 import Ssr.Document exposing (Document)
 import Ssr.Html exposing (..)
