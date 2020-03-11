@@ -1,6 +1,6 @@
 module Ssr.Attributes exposing
     ( Attribute, map
-    , attribute, class, style, href, target, src, alt
+    , attribute, class, style, href, target, src, alt, rel
     , on, onClick, onInput
     , toString, toHtmlAttribute
     )
@@ -9,7 +9,7 @@ module Ssr.Attributes exposing
 
 @docs Attribute, map
 
-@docs attribute, class, style, href, target, src, alt
+@docs attribute, class, style, href, target, src, alt, rel
 
 @docs on, onClick, onInput
 
@@ -75,6 +75,11 @@ src =
 alt : String -> Attribute msg
 alt =
     attribute "alt"
+
+
+rel : String -> Attribute msg
+rel =
+    attribute "rel"
 
 
 
