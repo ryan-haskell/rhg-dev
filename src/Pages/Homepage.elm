@@ -15,7 +15,10 @@ view =
         }
     , body =
         [ div [ class "column spacing-2" ]
-            [ h1 [] [ text "hi, i'm ryan." ]
+            [ div [ class "column" ]
+                [ h1 [] [ text "hi, i'm ryan." ]
+                , h2 [] [ text "and i build things." ]
+                ]
             , markdown """
 ### welcome to my site.
 
