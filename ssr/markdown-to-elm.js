@@ -8,6 +8,13 @@ const templates = {
 }
 const filenames = fs.readdirSync(path.join(__dirname, '..', 'content', 'posts'))
 
+const files = {}
+filenames.forEach(filename => {
+  const rawMarkdown = fs.readFileSync(path.join(__dirname, '..', 'content', 'posts', filename), { encoding: 'utf8' })
+  const { attributes: meta, body: content } = frontMatter(rawMarkdown)
+  files[filename] = { meta, content }
+})
+
 const start = _ => {
   fs.mkdirSync(path.join(__dirname, '..', 'src', 'Content'), { recursive: true })
 
@@ -17,16 +24,15 @@ const start = _ => {
     content: templates.content
       .split('{{imports}}').join(contentImports(filenames))
       .split('{{conditions}}').join(contentConditions(filenames))
+      .split('{{posts}}').join(contentPosts(files))
   }
 
   fs.writeFileSync(content.filepath, content.content, { encoding: 'utf8' })
 
   // Generate src/Content/*.elm
   filenames.forEach(filename => {
-    const file = fs.readFileSync(path.join(__dirname, '..', 'content', 'posts', filename), { encoding: 'utf8' })
     const moduleName = toModuleName(filename)
-    const { attributes: meta, body: content } =
-      frontMatter(file)
+    const { meta, content } = files[filename]
 
     const result = {
       filepath: path.join(__dirname, '..', 'src', 'Content', moduleName + '.elm'),
@@ -55,13 +61,21 @@ const contentImports = (names) =>
 
 const contentImport = (name) =>
   `import Content.${toModuleName(name)}`
+  
+const contentConditions = (names) =>
+  names.map(condition).join('\n')
 
 const condition = (filename) => 
 `        "${filename.split('.md').join('')}" ->
             Just Content.${toModuleName(filename)}.view
 `
 
-const contentConditions = (names) =>
-  names.map(condition).join('')
+const contentPosts = files =>
+  files.length == 0
+    ? '    []'
+    : '    [ ' + Object.entries(files).map(contentPost).join('\n    , ') + '\n    ]'
+
+const contentPost = ([ filename, { meta } ]) =>
+  `{ slug = "${filename}", title = "${meta.title}" }`
 
 start()

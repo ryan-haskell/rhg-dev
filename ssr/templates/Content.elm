@@ -1,4 +1,4 @@
-module Content exposing (viewPost)
+module Content exposing (viewPost, posts)
 
 {{imports}}
 import Ssr.Document exposing (Document)
@@ -10,3 +10,12 @@ viewPost slug =
 {{conditions}}
         _ ->
             Nothing
+
+type alias Post =
+    { slug : String
+    , title : String
+    }
+
+posts : List Post
+posts =
+{{posts}}

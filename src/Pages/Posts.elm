@@ -1,5 +1,6 @@
 module Pages.Posts exposing (view)
 
+import Content
 import Ssr.Attributes exposing (class, href)
 import Ssr.Document exposing (Document)
 import Ssr.Html exposing (..)
@@ -18,16 +19,16 @@ view =
                 [ h1 [] [ text "posts" ]
                 , h2 [] [ text "i can read ", em [] [ text "and" ], text " write!" ]
                 ]
-            , ul [ class "column spacing-half" ] <|
-                List.map viewLink
-                    [ ( "code-generation", "code generation" )
-                    , ( "elm-canvas-thing", "elm canvas thing" )
-                    ]
+            , ul [ class "column spacing-half" ] (List.map viewLink Content.posts)
             ]
         ]
     }
 
 
-viewLink : ( String, String ) -> Html msg
-viewLink ( slug, label ) =
-    li [] [ p [] [ a [ class "link", href ("/posts/" ++ slug) ] [ text label ] ] ]
+viewLink : { post | slug : String, title : String } -> Html msg
+viewLink { slug, title } =
+    li []
+        [ p []
+            [ a [ class "link", href ("/posts/" ++ slug) ] [ text title ]
+            ]
+        ]

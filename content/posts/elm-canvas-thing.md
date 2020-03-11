@@ -1,12 +1,12 @@
 ---
-title: Elm canvas thing
+title: elm canvas thing
 date: 1564952500784
 description: my 2D game prototype written in Elm.
 image: https://raw.githubusercontent.com/ryannhg/elm-canvas-things/master/screenshot.png
 tags: [ elm, games, rpg ]
 ---
 
-I want to make an RPG in Elm, so I got started making simple prototypes like this:
+I wanted to make an RPG in Elm, so I got started making simple prototypes like this:
 
 It's pretty fun building games in Elm, because the compiler is so freaking chill.
 
