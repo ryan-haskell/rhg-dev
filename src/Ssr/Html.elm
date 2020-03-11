@@ -238,7 +238,9 @@ htmlEncode str =
     List.foldl
         (\( unsafe, safe ) -> String.replace unsafe safe)
         str
-        []
+        [ ( "<", "&lt;" )
+        , ( ">", "&gt;" )
+        ]
 
 
 
