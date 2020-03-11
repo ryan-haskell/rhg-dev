@@ -5,7 +5,7 @@ module Components exposing
     )
 
 import Route
-import Ssr.Attributes exposing (class, href, target)
+import Ssr.Attributes exposing (class, href, target, rel)
 import Ssr.Html as Html exposing (..)
 import Transition exposing (Transition)
 
@@ -57,7 +57,7 @@ navbar =
 
 externalLink : ( String, String ) -> Html msg
 externalLink ( label, url ) =
-    a [ class "link link--external", target "_blank", href url ] [ text label ]
+    a [ class "link link--external", target "_blank", href url, rel "noopener" ] [ text label ]
 
 
 footer : Html msg
