@@ -1,7 +1,7 @@
 module Pages.Homepage exposing (view)
 
-import Content
-import Ssr.Attributes exposing (class, href)
+import Components
+import Ssr.Attributes exposing (class)
 import Ssr.Document exposing (Document)
 import Ssr.Html exposing (..)
 import Ssr.Markdown exposing (markdown)
@@ -27,7 +27,7 @@ view =
 My name is Ryan Haskell-Glatz– and I'm a web developer near Chicago!
 This site is where I share random things I've been working on.
 
-I tried to make it with *Comic Sans*, but that fell apart very quickly.
+I tried to make it with Comic Sans, but that fell apart very quickly.
 
 I usually like to write about design, elm, and side projects I'm creating.
 If you're interested in that kind of thing, you should check out
@@ -35,19 +35,7 @@ my blog posts!
 
 ### latest posts
 """
-                , div [ class "column spacing-half" ]
-                    (List.map
-                        (\post ->
-                            p []
-                                [ a
-                                    [ class "link"
-                                    , href ("/posts/" ++ post.slug)
-                                    ]
-                                    [ text post.title ]
-                                ]
-                        )
-                        latestPosts
-                    )
+                , Components.posts (Just 3)
                 , markdown """
 ### other places
 
@@ -58,11 +46,3 @@ I also have links for those like two inches below this paragraph (just in case)!
             ]
         ]
     }
-
-
-latestPosts : List Content.Post
-latestPosts =
-    Content.posts
-        |> List.sortBy .date
-        |> List.reverse
-        |> List.take 3

@@ -1,8 +1,5 @@
 module Pages.Post exposing (view)
 
--- import Content.CodeGeneration
--- import Content.ElmCanvasThing
-
 import Content
 import Ssr.Attributes exposing (class)
 import Ssr.Document exposing (Document)

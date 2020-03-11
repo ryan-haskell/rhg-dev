@@ -17,7 +17,7 @@ when someone made a request to a website:
 1. It rendered the HTML
 1. It sent it back to the user
 
-So before *any* javascript even ran, you'd get something like this back:
+So before any javascript even ran, you'd get something like this back:
 
 ```html
 <html>
