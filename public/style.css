@@ -225,7 +225,10 @@ pre code {
   border-radius: 0;
 }
 
-.markdown p code {
+.markdown p code,
+.markdown ul code,
+.markdown ol code, 
+.markdown blockquote code {
   font-size: 0.8rem;
   padding: 0 0.25rem;
   background-color: white;
