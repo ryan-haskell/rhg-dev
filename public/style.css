@@ -82,6 +82,10 @@ p, ul, ol, blockquote {
   color: #445;
 }
 
+li:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
 img {
   width: 100%;
   image-rendering: pixelated;
