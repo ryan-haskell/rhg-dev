@@ -58,7 +58,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
 }
 h1 { font-size: 3rem; line-height: 0.9; }
-h2 { opacity: 0.6; font-weight: 400; }
+h2 { opacity: 0.6; line-height: 1; font-weight: 400; margin-top: 0.5rem; }
 h3 { font-size: 1.5rem; line-height: 1; }
 
 p, ul, ol, blockquote {
@@ -176,9 +176,7 @@ p, ul, ol, blockquote {
 pre {
   width: 100%;
   line-height: 1.3;
-  font-size: 0.75rem;
-  margin: 1rem 0;
-  margin-bottom: 2rem;
+  font-size: 0.7rem;
   overflow-x: auto;
 }
 
@@ -192,7 +190,22 @@ pre code {
 }
 
 .markdown pre {
-  margin-bottom: 2rem !important;
+  margin: 0;
+  padding: 1rem;
+  border-top: solid 1px #ccc;
+  border-bottom: solid 1px #ccc;
+  background-color: white;
+  margin-left: -1rem;
+  width: calc(100% + 2rem);
+  border-radius: 0;
+}
+
+.markdown p code {
+  font-size: 0.8rem;
+  padding: 0 0.25rem;
+  background-color: white;
+  border: solid 1px #ccc;
+  border-radius: 2px;
 }
 
 .aside {
@@ -201,6 +214,15 @@ pre code {
   left: calc(50vw - 400px - 48px);
   transform: translate(-50%, -75%);
   visibility: hidden;
+}
+
+@media only screen and (min-width: 640px) {
+  .markdown pre {
+    margin: 0;
+    border: solid 1px #ccc;
+    border-radius: 2px;
+    width: 100%;
+  }
 }
 
 @media only screen and (min-width: 1120px) {

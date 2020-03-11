@@ -8,13 +8,11 @@ tags: [ elm, games, rpg ]
 
 I want to make an RPG in Elm, so I got started making simple prototypes like this:
 
-<!-- <iframe src="https://elm-canvas-demo.netlify.com"></iframe> -->
-
 It's pretty fun building games in Elm, because the compiler is so freaking chill.
 
 This post is just a breakdown of some of the stuff I added in.
 
-## terrain generation
+### terrain generation
 
 I was playing around with simple terrain generation for [another project](https://github.com/ryannhg/elm-terrain-generator). It uses a simple algorithm that just plants forests, water, and villages randomly.
 
@@ -26,7 +24,7 @@ If I handcrafted the world myself, nothing would be a surprise!
 
 You can play around with the seed value to make a new world.
 
-## three ways to do input
+### three ways to do input
 
 Initially, this only worked on the keyboard using WASD controls. But everytime I would share a link with my friends, we'd be out somewhere, away from keyboards...
 
@@ -34,7 +32,7 @@ For that reason, I added a simple touch control system so my pals could run arou
 
 In the long term, I don't have a plan to continue with mobile gameplay, but it's fun for now! 😄
 
-### gamepad support
+#### gamepad support
 
 I recently figured out how to support the Gamepad API in Elm [in another experiment](https://github.com/ryannhg/elm-gamepad-demo).
 
@@ -44,7 +42,7 @@ My buddy Nick commented on how it would be nice if the terrain generation worked
 
 If you have a gamepad, feel free to try it out!
 
-## the player animation
+### the player animation
 
 Another cool thing, is that the character animation only required three unique images.
 
@@ -52,7 +50,7 @@ Another cool thing, is that the character animation only required three unique i
 
 The reason the spritesheet has 6 images, is that it's more performant for me to generate the flipped versions once instead of flip them dynamically once the game is running!
 
-### how does it work?
+#### how does it work?
 
 for now, I'm just describing what column in the spritesheet to grab for each frame.
 
@@ -89,7 +87,7 @@ Expanded out, it's just a list like this:
 
 As you can see, the 2nd and 3rd columns (index 1 and 2) are a bit longer. That's to give the effect that the player is in the air longer, like he's taking a bigger stride!
 
-## wanna check it out?
+### wanna check it out?
 
 Play it in fullscreen over here: https://elm-canvas-demo.netlify.com
 

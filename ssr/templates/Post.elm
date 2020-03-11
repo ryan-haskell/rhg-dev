@@ -14,10 +14,12 @@ view =
         , image = "{{meta.image}}"
         }
     , body =
-        [ div [ class "column" ]
-            [ h1 [] [ text "{{meta.title}}" ]
-            , h2 [] [ text "{{meta.description}}" ]
+        [ div [ class "column spacing-2" ]
+            [ div [ class "column" ]
+                [ h1 [] [ text "{{meta.title}}" ]
+                , h2 [] [ text "{{meta.description}}" ]
+                ]
+            , markdown {{content}}
             ]
-        , markdown {{content}}
         ]
     }

@@ -13,7 +13,7 @@ someone reached out to me recently about how i generated Elm code with Elm for [
 
 #### designing for the elm community?
 
-__Code generation is neat, but having a well-designed package is a better outcome!__ Elm folks can easily understand functions and data types over your custom library.
+**Code generation is neat, but having a well-designed package is a better outcome!** Elm folks can easily understand functions and data types over your custom library.
 
 
 ### creating the elm project
@@ -156,7 +156,8 @@ Alright, if all the steps above are working, we're ready to generate some Elm co
 
 Let's imagine this is the app we want to make:
 
-1. We receive a list of pages (`[ "Dashboard", "AboutUs", "NotFound" ]`)
+1. We receive a list of pages. (`"Dashboard", "AboutUs", "NotFound"`)
+
 1. We need to generate a `dist/Route.elm` file like this:
 
 ```elm
@@ -184,7 +185,7 @@ Let's upgrade our existing app piece by piece to support this.
 
 #### but first!
 
-Something I did __not__ do when writing the elm-spa code generator was use `elm-test`. That was stupid, I feel stupid. Now I come back to my code and am very spooked.
+Something I did **not** do when writing the elm-spa code generator was use `elm-test`. That was stupid, I feel stupid. Now I come back to my code and am very spooked.
 
 I'm not much of a unit testing kinda guy, but holy boy I should have written tests for these things because i forgot how they worked like a week later.
 
