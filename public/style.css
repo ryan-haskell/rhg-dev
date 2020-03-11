@@ -1,6 +1,13 @@
 
 /* fonts */
-@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css);
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/woff2/FiraCode-Regular.https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/woff2') format('woff2'),
+    url("https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/woff2/FiraCode-Regular.woff") format("woff");
+}
 
 @font-face {
   font-family: 'Nunito';
@@ -41,6 +48,10 @@
 .hljs-attr, .hljs-variable, .hljs-template-variable, .hljs-type,
 .hljs-selector-class, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-number {
   color: #986700;
+}
+
+.hljs-section, .hljs-name, .hljs-selector-tag, .hljs-deletion, .hljs-subst {
+  color: #dc3222;
 }
 
 /* resets */
