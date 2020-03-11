@@ -1,8 +1,7 @@
 const path = require('path')
 const fs = require('fs')
-const { Elm } = require('./dist/elm.ssr.js')
-
-const config = require('./config.json')
+const { Elm } = require('../dist/elm.ssr.js')
+const config = require('./config.js')
 
 const start = () =>
   config.routes.forEach(route => {
@@ -25,10 +24,10 @@ const start = () =>
           .split(`{{path}}`).join(data.path)
           .split(`{{content}}`).join(data.content)
 
-      fs.mkdirSync(path.join(__dirname, 'dist', route), { recursive: true })
+      fs.mkdirSync(path.join(__dirname, '..', 'dist', route), { recursive: true })
     
       return fs.writeFileSync(
-        path.join(__dirname, 'dist', route, 'index.html'),
+        path.join(__dirname, '..', 'dist', route, 'index.html'),
         html,
         { encoding: 'utf8' }
       )

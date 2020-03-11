@@ -1,6 +1,5 @@
 module Ssr.Markdown exposing (markdown)
 
-import Markdown.Block
 import Markdown.Html
 import Markdown.Parser
 import Ssr.Attributes as Attr
@@ -10,7 +9,8 @@ import Ssr.Html as Html exposing (Html)
 markdown : String -> Html msg
 markdown content =
     Markdown.Parser.parse content
-        |> Result.mapError (always "Couldn't parse.")
+        |> Debug.log "RESULT"
+        |> Result.mapError (\_ -> "Couldn't parse.")
         |> Result.andThen (Markdown.Parser.render renderer)
         |> Result.withDefault []
         |> Html.div [ Attr.class "markdown column spacing-1" ]
@@ -19,7 +19,7 @@ markdown content =
 renderer : Markdown.Parser.Renderer (Html msg)
 renderer =
     { heading =
-        \{ level, rawText, children } ->
+        \{ level, children } ->
             case level of
                 1 ->
                     Html.h1 [] children
@@ -49,7 +49,7 @@ renderer =
     , bold = Html.text >> List.singleton >> Html.strong []
     , italic = Html.text >> List.singleton >> Html.em []
     , link =
-        \{ title, destination } ->
+        \{ destination } ->
             (if String.startsWith "http" destination then
                 Html.a [ Attr.class "link link--external", Attr.href destination, Attr.target "_blank", Attr.rel "noopener" ]
 

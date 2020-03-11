@@ -15,8 +15,8 @@ view =
     , body =
         [ h1 [] [ text "Posts" ]
         , ul []
-            [ li [] [ p [] [ a [ href "/posts/how-you-be" ] [ text "how you be" ] ] ]
-            , li [] [ p [] [ a [ href "/posts/welcome-doods" ] [ text "welcome doods" ] ] ]
+            [ li [] [ p [] [ a [ href "/posts/code-generation" ] [ text "code generation" ] ] ]
+            , li [] [ p [] [ a [ href "/posts/elm-canvas-thing" ] [ text "elm canvas thing" ] ] ]
             ]
         ]
     }

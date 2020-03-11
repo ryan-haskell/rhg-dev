@@ -8,14 +8,14 @@
     "dev": "npm run build && npm run dev:build & npm run dev:server",
     "dev:build": "npm run dev:build:elm & npm run dev:build:generate & npm run dev:build:cp:public",
     "dev:build:elm": "chokidar src -c 'npm run build:elm && npm run generate || true'",
-    "dev:build:generate": "chokidar templates -c 'npm run generate'",
+    "dev:build:generate": "chokidar ssr -c 'npm run generate'",
     "dev:build:cp:public": "chokidar public -c 'npm run cp:public'",
     "dev:server": "serve dist",
     "build": "npm run rm:dist && npm run build:elm && npm run generate && npm run cp:public",
     "build:elm": "npm run build:elm:ssr && npm run build:elm:client",
-    "build:elm:ssr": "elm make src/Main/Ssr.elm --optimize --output dist/elm.ssr.js",
+    "build:elm:ssr": "elm make src/Main/Ssr.elm --debug --output dist/elm.ssr.js",
     "build:elm:client": "elm make src/Main/Client.elm --debug --output dist/elm.client.js",
-    "generate": "node index.js",
+    "generate": "node ssr/index.js",
     "rm:dist": "rm -rf dist || true",
     "cp:public": "cp -r public/* dist"
   },
@@ -25,6 +25,7 @@
   "devDependencies": {
     "chokidar-cli": "2.1.0",
     "elm": "0.19.1-3",
+    "front-matter": "3.1.0",
     "serve": "11.3.0"
   }
 }
