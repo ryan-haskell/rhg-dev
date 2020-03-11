@@ -26,7 +26,7 @@
 
 .hljs-attr, .hljs-variable, .hljs-template-variable, .hljs-type,
 .hljs-selector-class, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-number {
-    color: #986700;
+  color: #986700;
 }
 
 /* resets */
@@ -58,6 +58,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
 }
 h1 { font-size: 3rem; line-height: 0.9; }
+h2 { opacity: 0.6; font-weight: 400; }
 h3 { font-size: 1.5rem; line-height: 1; }
 
 p, ul, ol, blockquote {
