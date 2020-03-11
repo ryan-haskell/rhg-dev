@@ -57,8 +57,8 @@ renderer =
             )
                 >> Ok
     , image = \{ src } alt -> Html.img [ Attr.src src, Attr.alt alt ] [] |> Ok
-    , unorderedList = \items -> Html.ul [] [ Html.text "TODO" ]
-    , orderedList = \int items -> Html.ol [] [ Html.text "TODO" ]
+    , unorderedList = \items -> Html.ul [] (List.map (\(Markdown.Parser.ListItem _ views) -> Html.li [] views) items)
+    , orderedList = \_ items -> Html.ol [] (List.map (Html.li []) items)
     , codeBlock =
         \{ body, language } ->
             Html.pre []
