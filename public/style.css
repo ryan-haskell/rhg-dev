@@ -5,8 +5,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/woff2/FiraCode-Regular.https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/woff2') format('woff2'),
-    url("https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/woff2/FiraCode-Regular.woff") format("woff");
+  src: url('https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/woff2/FiraCode-Regular.woff2') format('woff2'),
+    url("https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/woff/FiraCode-Regular.woff") format("woff");
 }
 
 @font-face {
