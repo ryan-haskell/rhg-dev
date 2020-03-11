@@ -76,6 +76,6 @@ const contentPosts = files =>
     : '    [ ' + Object.entries(files).map(contentPost).join('\n    , ') + '\n    ]'
 
 const contentPost = ([ filename, { meta } ]) =>
-  `{ slug = "${filename}", title = "${meta.title}" }`
+  `{ slug = "${filename.split('.md').join('')}", title = "${meta.title}" }`
 
 start()
