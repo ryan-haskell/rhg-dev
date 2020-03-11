@@ -33,6 +33,7 @@
         setTimeout(_ => {
           hljs.initHighlighting.called = false
           window.hljs.initHighlighting()
+          window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
         }, 100)
       )
     })
