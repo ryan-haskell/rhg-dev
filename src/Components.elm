@@ -35,10 +35,7 @@ navbar =
             List.map link
                 [ ( "posts", Route.Posts )
                 ]
-                ++ List.map externalLink
-                    [ ( "github", "https://www.github.com/ryannhg" )
-                    , ( "twitter", "https://www.twitter.com/ryan_nhg" )
-                    ]
+                ++ List.map viewExternalLink externalLinks
 
         link ( label, route ) =
             a [ class "link", href (Route.toPath route) ] [ text label ]
@@ -55,19 +52,28 @@ navbar =
         ]
 
 
-externalLink : ( String, String ) -> Html msg
-externalLink ( label, url ) =
-    a [ class "link link--external", target "_blank", href url, rel "noopener" ] [ text label ]
+viewExternalLink : ( String, String ) -> Html msg
+viewExternalLink ( label, url ) =
+    a
+        [ class "link link--external"
+        , target "_blank"
+        , href url
+        , rel "noopener"
+        ]
+        [ text label ]
 
 
 footer : Html msg
 footer =
-    Html.footer [ class "row center-x space-between pt-2 pb-1" ]
-        [ span [ class "font--small" ] [ text "built by Ryan Haskell-Glatz in 2020" ]
+    Html.footer [ class "row center-x space-between pt-2 pb-1 font--small" ]
+        [ text "built by Ryan Haskell-Glatz in 2020"
         , div [ class "row spacing-1" ]
-            (List.map externalLink
-                [ ( "github", "https://www.github.com/ryannhg" )
-                , ( "twitter", "https://www.github.com/ryan_nhg" )
-                ]
-            )
+            (List.map viewExternalLink externalLinks)
         ]
+
+
+externalLinks : List ( String, String )
+externalLinks =
+    [ ( "github", "https://www.github.com/ryannhg" )
+    , ( "twitter", "https://www.twitter.com/ryan_nhg" )
+    ]

@@ -1,6 +1,7 @@
 module Pages.Homepage exposing (view)
 
-import Ssr.Attributes exposing (class)
+import Content
+import Ssr.Attributes exposing (class, href)
 import Ssr.Document exposing (Document)
 import Ssr.Html exposing (..)
 import Ssr.Markdown exposing (markdown)
@@ -17,52 +18,51 @@ view =
         [ div [ class "column spacing-2" ]
             [ div [ class "column" ]
                 [ h1 [] [ text "hi, i'm ryan." ]
-                , h2 [] [ text "and i build things." ]
+                , h2 [] [ text "and you're yourself, how nice!" ]
                 ]
-            , markdown """
-### welcome to my site.
+            , div [ class "column spacing-1" ]
+                [ markdown """
+### welcome to here
 
-I'm a web developer working in Chicago! This site is a place for me to keep
-track of projects and blog posts. I love [elm](https://elm-lang.org)!
+My name is Ryan Haskell-Glatz– and I'm a web developer near Chicago!
+This site is where I share random things I've been working on.
 
-```js
-export const add = (a, b) =>
-    a + b
+I tried to make it with *Comic Sans*, but that fell apart very quickly.
 
-export const multiply = (a, b) =>
-    a * b
-```
+I usually like to write about design, elm, and side projects I'm creating.
+If you're interested in that kind of thing, you should check out
+my blog posts!
 
-```elm
-module Math exposing
-    ( add
-    , multiply
-    )
-
-add : Int -> Int -> Int
-add a b =
-    a + b
-
-multiply : Int -> Int -> Int
-multiply a b =
-    a * b
-```
-
-I'm a web developer **working** in Chicago! This site is a place for me to keep
-track of projects and [blog posts](/posts). I'm a web developer working in Chicago! This site is a place for me to keep
-track of projects and blog posts. I'm a web developer working in Chicago! This site is a place for me to keep
-track of projects and blog posts.
-
-### yes sir!
-
-I'm a web developer working in Chicago! This site is a place for me to keep
-track of projects and blog posts.
-
-I'm a web developer working in Chicago! This site is a place for me to keep
-track of projects and blog posts. I'm a web developer working in Chicago! This site is a place for me to keep
-track of projects and blog posts.
-
+### latest posts
 """
+                , div [ class "column spacing-half" ]
+                    (List.map
+                        (\post ->
+                            p []
+                                [ a
+                                    [ class "link"
+                                    , href ("/posts/" ++ post.slug)
+                                    ]
+                                    [ text post.title ]
+                                ]
+                        )
+                        latestPosts
+                    )
+                , markdown """
+### other places
+
+I'm not much of a social media guy, but if you'd like you can follow me on [github](https://www.github.com/ryannhg) or [twitter](https://www.twitter.com/ryan_nhg).
+I also have links for those like two inches below this paragraph (just in case)!
+"""
+                ]
             ]
         ]
     }
+
+
+latestPosts : List Content.Post
+latestPosts =
+    Content.posts
+        |> List.sortBy .date
+        |> List.reverse
+        |> List.take 3

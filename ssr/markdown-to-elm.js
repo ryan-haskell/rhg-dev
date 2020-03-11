@@ -39,6 +39,7 @@ const start = _ => {
       content: templates.post
         .split('{{moduleName}}').join(`Content.${moduleName}`)
         .split('{{meta.title}}').join(meta.title || `${filename} is missing title`)
+        .split('{{meta.date}}').join(meta.date || `${filename} is missing date`)
         .split('{{meta.description}}').join(meta.description || `${filename} is missing description`)
         .split('{{meta.image}}').join(meta.image || `${filename} is missing image`)
         .split('{{content}}').join(JSON.stringify(content))
@@ -76,6 +77,6 @@ const contentPosts = files =>
     : '    [ ' + Object.entries(files).map(contentPost).join('\n    , ') + '\n    ]'
 
 const contentPost = ([ filename, { meta } ]) =>
-  `{ slug = "${filename.split('.md').join('')}", title = "${meta.title}" }`
+  `{ slug = "${filename.split('.md').join('')}", title = "${meta.title}", date = ${meta.date} }`
 
 start()
