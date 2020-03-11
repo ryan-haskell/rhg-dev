@@ -1,5 +1,7 @@
 
 /* fonts */
+@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css);
+
 @font-face {
   font-family: 'Nunito';
   font-style: normal;
