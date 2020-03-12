@@ -11,7 +11,7 @@ sections:
   label: Blog Posts
   create: documents
   match: "*.md"
-upload_dir: uploads
+upload_dir: public/uploads
 public_path: "/uploads"
 front_matter_path: ''
 use_front_matter_path: false
