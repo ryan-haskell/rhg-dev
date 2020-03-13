@@ -5,7 +5,7 @@ date: "1583961793589"
 image: https://images.unsplash.com/photo-1583919540895-56040d9e6a60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60
 
 ---
-### what's ssr, dude?
+### what's ssr?
 
 So back in the day, javascript didn't have a bunch of cool frameworks. most people used [jquery](https://jquery.com/), and avoided JS as much as humanly possible.
 
