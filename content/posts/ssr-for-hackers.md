@@ -1,21 +1,20 @@
 ---
 title: ssr for hackers
 description: if it don't be, i can make it do.
-date: 1583961793589
+date: "1583961793589"
 image: https://images.unsplash.com/photo-1583919540895-56040d9e6a60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60
+
 ---
+### what's ssr, dude?
 
-### what's ssr?
-
-So back in the day, javascript didn't have a bunch of cool frameworks. most people used [jquery](https://jquery.com/),
-and avoided JS as much as humanly possible.
+So back in the day, javascript didn't have a bunch of cool frameworks. most people used [jquery](https://jquery.com/), and avoided JS as much as humanly possible.
 
 when someone made a request to a website:
 
 1. The server saw a path like `/posts/hello`
-1. It fetched all the content from a database or something
-1. It rendered the HTML
-1. It sent it back to the user
+2. It fetched all the content from a database or something
+3. It rendered the HTML
+4. It sent it back to the user
 
 So before any javascript even ran, you'd get something like this back:
 
@@ -37,11 +36,10 @@ But holy boy times have changed and things got a whole lot more bizarre.
 Most javascript frameworks and modern technologies do "client side rendering", meaning they
 do the following sequence of steps:
 
-
 1. The server saw a path like `/posts/hello`
-1. It fetched all the content from a database or something
-1. It sent that raw data to the user
-1. JavaScript rendered the HTML
+2. It fetched all the content from a database or something
+3. It sent that raw data to the user
+4. JavaScript rendered the HTML
 
 And now, before any scripts ran on the page, your browser gets something like this:
 
