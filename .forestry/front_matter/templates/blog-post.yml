@@ -11,6 +11,8 @@ fields:
 - type: number
   name: date
   label: date
-- type: textarea
-  name: image
+- name: image
+  type: file
+  config:
+    maxSize: 250
   label: image
