@@ -7,7 +7,7 @@ sections:
 - type: heading
   label: Posts
 - type: directory
-  path: content
+  path: content/posts
   label: Blog Posts
   create: documents
   match: "*.md"
