@@ -1,6 +1,9 @@
 window.addEventListener('load', () => {
   const app = Elm.Main.Client.init()
-//   window.hljs.initHighlighting()
+
+  // Highlight blocks
+  document.querySelectorAll('pre code').forEach(hljs.highlightBlock)
+
   // Ports
   app.ports.afterNavigate.subscribe(meta =>
     setTimeout(_ => {
@@ -32,7 +35,7 @@ window.addEventListener('load', () => {
       ], meta.image)
 
       // Highlight code blocks
-//       hljs.initHighlighting.called = false; window.hljs.initHighlighting()
+      document.querySelectorAll('pre code').forEach(hljs.highlightBlock)
 
       // Scroll to top
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })

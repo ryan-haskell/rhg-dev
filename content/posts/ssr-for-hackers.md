@@ -107,7 +107,7 @@ Here we say Html is one of two things:
 
 In a file at `src/Ssr/Html.elm` let's build an API on top of that data structure:
 
-```elm
+```elmo
 module Ssr.Html exposing
   ( Html
   , node, div, h1, h2
@@ -144,7 +144,7 @@ text =
 
 We'll also need to define `src/Ssr/Attributes.elm` to support adding attributes and events:
 
-```elm
+```elmo
 module Ssr.Attributes exposing
   ( Attribute
   , attribute, id, class
