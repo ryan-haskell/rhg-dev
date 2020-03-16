@@ -1,4 +1,3 @@
-
 /* fonts */
 @font-face {
   font-family: 'Fira Code';
@@ -88,19 +87,18 @@ h3 { font-size: 1.5rem; line-height: 1; }
 
 p, ul, ol, blockquote {
   width: 100%;
-  line-height: 1.2;
+  line-height: 1.3;
   margin: 0;
   color: #445;
 }
 
 li:not(:last-child) {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 img {
   width: 100%;
   image-rendering: pixelated;
-  
 }
 
 .font--heading { font-weight: 800; }
