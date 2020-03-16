@@ -29,13 +29,13 @@
       const app = Elm.Main.Client.init()
       window.hljs.initHighlighting()
       // Ports
-      app.ports.afterNavigate.subscribe(_ =>
-        setTimeout(_ => {
-          hljs.initHighlighting.called = false
-          window.hljs.initHighlighting()
-          window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
-        }, 500)
-      )
+//       app.ports.afterNavigate.subscribe(_ =>
+//         setTimeout(_ => {
+//           hljs.initHighlighting.called = false
+//           window.hljs.initHighlighting()
+//           window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+//         }, 500)
+//       )
     })
   </script>
 </body>
