@@ -48,7 +48,7 @@ navbar =
     div [ class "navbar" ]
         [ header [ class "header row space-between center-x" ]
             [ a [ class "font--heading font--big", href "/" ] [ text "rhg.dev" ]
-            , div [ class "row spacing-1 font--small" ] links
+            , div [ class "row spacing-1" ] links
             ]
         , aside [ class "aside column spacing-1 center-y" ]
             [ a [ class "font--heading font--big", href "/" ] [ text "rhg.dev" ]
