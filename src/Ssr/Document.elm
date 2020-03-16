@@ -1,8 +1,8 @@
-module Ssr.Document exposing (Document, toDocument)
+module Ssr.Document exposing (Document, Meta, toDocument)
 
 {-|
 
-@docs Document, toDocument
+@docs Document, Meta, toDocument
 
 -}
 
@@ -11,12 +11,15 @@ import Ssr.Html as Html exposing (Html)
 
 
 type alias Document msg =
-    { meta :
-        { title : String
-        , description : String
-        , image : String
-        }
+    { meta : Meta
     , body : List (Html msg)
+    }
+
+
+type alias Meta =
+    { title : String
+    , description : String
+    , image : String
     }
 
 
