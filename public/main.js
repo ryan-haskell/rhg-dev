@@ -3,7 +3,7 @@ window.addEventListener('load', () => {
   window.hljs.initHighlighting()
   // Ports
   app.ports.afterNavigate.subscribe(meta =>
-    setTimeout(meta => {
+    setTimeout(_ => {
       // Set meta
       const { protocol, host, pathname } = window.location
       const updateMeta = (selectors, value) =>
