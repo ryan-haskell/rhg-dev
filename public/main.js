@@ -7,7 +7,7 @@ window.addEventListener('load', () => {
       // Set meta
       const { protocol, host, pathname } = window.location
       const updateMeta = (selectors, value) =>
-        selectors.map(s => document.querySelector(s).setAttribute('content', value)
+        selectors.map(s => document.querySelector(s).setAttribute('content', value))
 
       updateMeta([
         'meta[property="og:url"]'
