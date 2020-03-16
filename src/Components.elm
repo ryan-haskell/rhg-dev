@@ -108,7 +108,7 @@ postListing : Post -> Html msg
 postListing { slug, title, date } =
     p []
         [ h4 [] [ a [ class "link", href ("/posts/" ++ slug) ] [ text title ] ]
-        , p [ class "font--small", style "opacity" " 0.75" ] [ text (formatDate date) ]
+        , p [ class "font--small" ] [ text (formatDate date) ]
         ]
 
 
