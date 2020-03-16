@@ -24,18 +24,6 @@
   <script defer async src="/elm.client.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
   <script defer async src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/elm.min.js"></script>
-  <script>
-    window.addEventListener('load', () => {
-      const app = Elm.Main.Client.init()
-      window.hljs.initHighlighting()
-      // Ports
-      app.ports.afterNavigate.subscribe(_ =>
-        setTimeout(_ => {
-          hljs.initHighlighting.called = false; window.hljs.initHighlighting()
-          window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
-        }, 100)
-      )
-    })
-  </script>
+  <script defer async src="/main.js"></script>
 </body>
 </html>
