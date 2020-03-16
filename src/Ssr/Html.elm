@@ -33,6 +33,7 @@ module Ssr.Html exposing
 -}
 
 import Html as Core
+import Html.Lazy as Lazy
 import Ssr.Attributes as Attributes exposing (Attribute)
 
 
@@ -246,7 +247,7 @@ toHtml html =
 
 toLazyHtml : Html msg -> Core.Html msg
 toLazyHtml =
-    Html.lazy toHtml
+    Lazy.lazy toHtml
 
 
 htmlEncode : String -> String
