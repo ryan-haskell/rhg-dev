@@ -7,7 +7,7 @@ module Ssr.Html exposing
     , pre, blockquote, code
     , img, hr, br
     , p, ul, ol, li
-    , toString, toHtml, toLazyHtml
+    , toString, toHtml
     )
 
 {-|
@@ -28,7 +28,7 @@ module Ssr.Html exposing
 
 @docs p, ul, ol, li
 
-@docs toString, toHtml, toLazyHtml
+@docs toString, toHtml
 
 -}
 
@@ -243,11 +243,6 @@ toHtml html =
 
         Text string ->
             Core.text string
-
-
-toLazyHtml : Html msg -> Core.Html msg
-toLazyHtml =
-    Lazy.lazy toHtml
 
 
 htmlEncode : String -> String
