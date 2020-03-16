@@ -2,7 +2,7 @@ window.addEventListener('load', () => {
   const app = Elm.Main.Client.init()
   window.hljs.initHighlighting()
   // Ports
-  app.ports.afterNavigate.subscribe(_ =>
+  app.ports.afterNavigate.subscribe(meta =>
     setTimeout(meta => {
       // Set meta
       const { protocol, host, pathname } = window.location
