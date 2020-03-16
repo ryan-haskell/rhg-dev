@@ -108,15 +108,18 @@ Here we say Html is one of two things:
 In a file at `src/Ssr/Html.elm` let's build an API on top of that data structure:
 
 ```elm
+module Ssr.Html exposing
+  ( Html
+  , node, div, h1, h2
+  , text
+  )
+
 import Ssr.Attributes exposing (Attribute)
 
 
 type Html msg
   = Node String (List (Attribute msg)) (List (Html msg))
   | Text String
-
-
--- NODES
 
 node : String -> List (Attribute msg) -> List (Html msg) -> Html msg
 node =
@@ -133,8 +136,6 @@ h1 =
 h2 : List (Attribute msg) -> List (Html msg) -> Html msg
 h2 =
   node "h2"
-
--- TEXT
 
 text : String -> Html msg
 text =
