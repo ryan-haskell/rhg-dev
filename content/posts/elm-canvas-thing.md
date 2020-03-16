@@ -48,7 +48,7 @@ If you have a gamepad, feel free to try it out!
 
 Another cool thing, is that the character animation only required three unique images.
 
-![The spritesheet](https://raw.githubusercontent.com/ryannhg/elm-canvas-things/master/dist/public/running-dood.png)
+![(pixel-art) a spritesheet for the running dude](https://raw.githubusercontent.com/ryannhg/elm-canvas-things/master/dist/public/running-dood.png)
 
 The reason the spritesheet has 6 images, is that it's more performant for me to generate the flipped versions once instead of flip them dynamically once the game is running!
 
