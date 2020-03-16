@@ -27,4 +27,4 @@ toDocument : Document msg -> Browser.Document msg
 toDocument { meta, body } =
     Browser.Document
         meta.title
-        (List.map Html.toLazyHtml body)
+        (List.map Html.toHtml body)
