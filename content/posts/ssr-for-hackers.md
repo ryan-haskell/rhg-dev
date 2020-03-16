@@ -2,7 +2,7 @@
 title: ssr for hackers
 description: if it don't be, i can make it do.
 date: "1583961793589"
-image: https://images.unsplash.com/photo-1583919540895-56040d9e6a60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60
+image: https://rhg.dev/rhg-dev-lighthouse-audit.png
 
 ---
 ### what's ssr?
