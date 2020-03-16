@@ -7,27 +7,29 @@ window.addEventListener('load', () => {
       // Set meta
       const { protocol, host, pathname } = window.location
       const updateMeta = (selectors, value) =>
-        selectors.map(s => document.querySelector(s).setAttribute('content', value))
+        selectors.forEach(s => {
+          document.querySelector(`meta[${s}]`).content = value
+        })
 
       updateMeta([
-        'meta[property="og:url"]'
+        'property="og:url"'
       ], `${protocol}//${host}${pathname}`)
 
       updateMeta([
-        'meta[name="twitter:title"]',
-        'meta[property="og:title"]'
+        'name="twitter:title"',
+        'property="og:title"'
       ], meta.title)
 
       updateMeta([
-        'meta[name="description"]',
-        'meta[name="twitter:description"]',
-        'meta[property="og:description"]'
+        'name="description"',
+        'name="twitter:description"',
+        'property="og:description"'
       ], meta.description)
 
       updateMeta([
-        'meta[name="image"]',
-        'meta[name="twitter:image"]',
-        'meta[property="og:image"]'
+        'name="image"',
+        'name="twitter:image"',
+        'property="og:image"'
       ], meta.image)
 
       // Highlight code blocks
