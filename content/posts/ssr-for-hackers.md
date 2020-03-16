@@ -105,7 +105,7 @@ Here we say Html is one of two things:
 
 ### making Ssr.Html
 
-In a file at `./src/Ssr/Html.elm` let's build an API on top of that data structure:
+In a file at `src/Ssr/Html.elm` let's build an API on top of that data structure:
 
 ```elm
 module Ssr.Html exposing
@@ -260,7 +260,7 @@ main =
 ```
 
 ```elm
-module Main.Ssr exposing (main)
+module Main.Client exposing (main)
 
 main : Program Flags Model Msg
 main =
@@ -268,6 +268,12 @@ main =
     { -- uses Ssr.Html.toHtml
     }
 ```
+
+When it comes time to call `elm make`, `src/Main/Ssr.elm` is used by NodeJS to generate static HTML files, while `src/Main/Client.elm` is used to rehydrate the app when the JavaScript loads.
+
+That results in something like this:
+
+![A slick 98/100/100/100 google lighthouse raiting, because this page is blazing fast and accessible bro](/rhg-dev-lighthouse-audit.png)
 
 ### want more detail?
 
