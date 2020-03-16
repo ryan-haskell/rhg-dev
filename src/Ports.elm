@@ -1,9 +1,5 @@
-port module Ports exposing (sendAfterNavigate)
+port module Ports exposing (afterNavigate)
 
+import Ssr.Document
 
-port afterNavigate : () -> Cmd msg
-
-
-sendAfterNavigate : Cmd msg
-sendAfterNavigate =
-    afterNavigate ()
+port afterNavigate : Ssr.Document.Meta -> Cmd msg
