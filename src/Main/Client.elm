@@ -78,7 +78,11 @@ update msg model =
 
         FadeIn url ->
             ( { model | url = url, transition = Transition.Visible }
-            , Ports.sendAfterNavigate
+            , url
+                |> Route.fromUrl
+                |> Pages.view { transition = model.transition }
+                |> .meta
+                |> Ports.afterNavigate
             )
 
 
