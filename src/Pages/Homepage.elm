@@ -24,12 +24,12 @@ view =
                 [ markdown """
 ### welcome to here
 
-My name is Ryan Haskell-Glatz– and I'm a web developer near Chicago!
-This site is where I share random things I've been working on.
+My name is Ryan Haskell-Glatz, and I'm a web developer from Chicago.
+This site is where I share random projects I've been working on.
 
 I tried to make it with Comic Sans, but that fell apart very quickly.
 
-I usually like to write about design, elm, and side projects I'm creating.
+I usually write about design, elm, and side projects.
 If you're interested in that kind of thing, you should check out
 my blog posts!
 
@@ -40,7 +40,7 @@ my blog posts!
 ### other places
 
 I'm not much of a social media guy, but if you'd like you can follow me on [github](https://www.github.com/ryannhg) or [twitter](https://www.twitter.com/ryan_nhg).
-I also have links for those like two inches below this paragraph (just in case)!
+But I also have links for those like two inches below this paragraph (just in case)!
 """
                 ]
             ]
