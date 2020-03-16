@@ -98,6 +98,8 @@ li:not(:last-child) {
 
 img {
   width: 100%;
+}
+img[alt^="(pixel-art)"]
   image-rendering: pixelated;
 }
 
