@@ -106,7 +106,7 @@ posts maximum =
 
 postListing : Post -> Html msg
 postListing { slug, title, date } =
-    p []
+    div []
         [ h4 [] [ a [ class "link", href ("/posts/" ++ slug) ] [ text title ] ]
         , p [ class "font--small" ] [ text (formatDate date) ]
         ]
