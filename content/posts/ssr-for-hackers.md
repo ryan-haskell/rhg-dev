@@ -63,7 +63,7 @@ Here, `FancyBoi` could be React, Vue, or Elm. They all wait until the javascript
 So rendering Elm in HTML looks something like this:
 
 ```elm
-import Html exposing (div, h1, h2, text)
+import Html exposing (Html, div, h1, h2, text)
 import Html.Attributes exposing (class)
 
 view : Html msg
@@ -83,8 +83,7 @@ When the JavaScript on the page loads, Elm renders this under the hood:
 </div>
 ```
 
-- Functions like `div`, `h1`, and `h2` take in a list of attributes followed by a list of
-list of children.
+- Functions like `div`, `h1`, and `h2` take in a list of attributes followed by a list of children.
 - Functions like `text` just take a String and render it to the DOM.
 
 If we wanted to write Elm code that rendered on the server, we'd need a way to render the
@@ -95,7 +94,7 @@ For this experiment, we can create our own **custom type** to capture the types 
 
 ```elm
 type Html msg
-  = Node (List (Attribute msg)) (List (Node msg))
+  = Node String (List (Attribute msg)) (List (Html msg))
   | Text String
 ```
 
@@ -103,3 +102,175 @@ Here we say Html is one of two things:
 
 1. A node with attributes and children
 1. Some text we want to render
+
+### making Ssr.Html
+
+In a file at `./src/Ssr/Html.elm` let's build an API on top of that data structure:
+
+```elm
+module Ssr.Html exposing
+  ( Html
+  , node, div, h1, h2
+  , text
+  )
+
+import Ssr.Attributes exposing (Attribute)
+
+
+type Html msg
+  = Node String (List (Attribute msg)) (List (Html msg))
+  | Text String
+
+
+-- NODES
+
+node : String -> List (Attribute msg) -> List (Html msg) -> Html msg
+node =
+  Node
+  
+div : List (Attribute msg) -> List (Html msg) -> Html msg
+div =
+  node "div"
+
+h1 : List (Attribute msg) -> List (Html msg) -> Html msg
+h1 =
+  node "h1"
+
+h2 : List (Attribute msg) -> List (Html msg) -> Html msg
+h2 =
+  node "h2"
+
+-- TEXT
+
+text : String -> Html msg
+text =
+  Text
+```
+
+We'll also need to define `src/Ssr/Attributes.elm` to support adding attributes and events:
+
+```elm
+module Ssr.Attributes exposing
+  ( Attribute
+  , attribute, id, class
+  , event, onClick
+  )
+  
+import Json.Decode as Json exposing (Decoder)
+  
+type Attribute msg
+  = Attribute String String
+  | Event String (Decoder msg)
+  
+-- ATTRIBUTES
+
+attribute : String -> String -> Attribute msg
+attribute =
+  Attribute
+  
+class : String -> Attribute msg
+class =
+  attribute "class"
+  
+-- EVENTS
+
+event : String -> Decoder msg -> Attribute msg
+event =
+  Event
+  
+onClick : msg -> Attribute msg
+onClick msg =
+  event "click" (Json.succeed msg)
+```
+
+### aaaand... it's useless.
+
+With this API, we're able to write HTML that looks just like `elm/html`, the only difference
+is we need to update our import statement to use the new module:
+
+
+```elm
+import Ssr.Html exposing (Html, div, h1, h2, text)
+import Ssr.Attributes exposing (class)
+
+view : Html msg
+view =
+  div [ class "hero" ]
+      [ h1 [ class "hero__title" ] [ text "Hello!" ]
+      , h2 [ class "hero__subtitle" ] [ text "Sup?" ]
+      ]
+```
+
+The new `Ssr.Html` and `Ssr.Attributes` are working great for building up data structures, but we can't do anything with them! We need to actually render Html:
+
+1. The static server-side markup like `<h1>Hello</h1>`
+1. The living, breathing HTML that Elm uses so we can click buttons and do actual stuff!
+
+For that reason, `Ssr.Html` and `Ssr.Attributes` need to expose two new functions:
+
+```elm
+module Ssr.Html exposing
+  ( ...
+  , toString, toHtml
+  )
+
+import Ssr.Attributes as Attr exposing (Attribute)
+import Html as Core
+
+
+type Html msg
+  = Node String (List (Attribute msg)) (List (Html msg))
+  | Text String
+  
+toString : Html msg -> String
+toString html =
+  case html of
+    Node tag attrs children ->
+      String.concat
+        [ "<", tag, Attr.toString attrs, ">"
+        , String.concat (List.map toString children)
+        , "</", tag, ">"
+        ]
+    
+    Text string ->
+       -- ensure HTML safe characters
+      htmlEncode string
+
+toHtml : Html msg -> Core.Html msg
+toHtml html =
+  case html of
+    Node tag attributes children ->
+      Core.node tag (List.map Attr.toAttribute attributes) (List.map toHtml children)
+
+    Text string ->
+      Core.text string
+```
+
+Now we can have two entrpoints to our app, `src/Main/Ssr.elm` and `src/Main/Client.elm` that reuse that same
+`Ssr.Html` markup for different outputs:
+
+```elm
+module Main.Ssr exposing (main)
+
+main : Program Flags Model Msg
+main =
+  Platform.worker
+    { -- uses Ssr.Html.toString
+    }
+```
+
+```elm
+module Main.Ssr exposing (main)
+
+main : Program Flags Model Msg
+main =
+  Browser.application
+    { -- uses Ssr.Html.toHtml
+    }
+```
+
+### want more detail?
+
+You can check out the source code on github: [https://github.com/ryannhg/rhg-dev](https://github.com/ryannhg/rhg-dev)
+
+Thanks for reading!
