@@ -27,7 +27,6 @@ window.addEventListener('load', () => {
       ], meta.description)
 
       updateMeta([
-        'name="image"',
         'name="twitter:image"',
         'property="og:image"'
       ], meta.image)
