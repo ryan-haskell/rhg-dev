@@ -204,24 +204,35 @@ toString : Html msg -> String
 toString html =
     case html of
         Node tag attrs children ->
-            String.concat
-                [ "<"
-                , tag
-                , if List.isEmpty attrs then
-                    ""
+            if List.member tag [ "area", "base", "br", "col", "embed", "hr", "img", "input", "keygen", "link", "meta", "param", "source", "track", "wbr" ] then
+                String.concat
+                    [  "<"
+                    , tag
+                    , if List.isEmpty attrs then
+                        ""
 
-                  else
-                    " " ++ Attributes.toString attrs
-                , ">"
-                , children |> List.map toString |> String.concat
-                , "</"
-                , tag
-                , ">"
-                ]
+                      else
+                        " " ++ Attributes.toString attrs
+                    , "/>"
+                    ]
+            else
+                String.concat
+                    [ "<"
+                    , tag
+                    , if List.isEmpty attrs then
+                        ""
+
+                      else
+                        " " ++ Attributes.toString attrs
+                    , ">"
+                    , children |> List.map toString |> String.concat
+                    , "</"
+                    , tag
+                    , ">"
+                    ]
 
         Text string ->
             htmlEncode string
-
 
 toHtml : Html msg -> Core.Html msg
 toHtml html =
