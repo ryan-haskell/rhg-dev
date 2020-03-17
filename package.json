@@ -12,7 +12,7 @@
     "dev:build:generate:markdown": "chokidar content -c 'npm run generate:markdown'",
     "dev:build:cp:public": "chokidar public -c 'npm run cp:public'",
     "dev:server": "serve dist",
-    "build": "npm run generate:markdown && npm run rm:dist && npm run build:elm && npm run generate && npm run cp:public",
+    "build": "npm run generate:sitemap && npm run generate:markdown && npm run rm:dist && npm run build:elm && npm run generate && npm run cp:public",
     "build:elm": "npm run build:elm:ssr && npm run build:elm:client",
     "build:elm-dev": "npm run build:elm:ssr && npm run build:elm:client-dev",
     "build:elm:ssr": "elm make src/Main/Ssr.elm --optimize --output dist/elm.ssr.js",
@@ -20,6 +20,7 @@
     "build:elm:client-dev": "elm make src/Main/Client.elm --debug --output dist/elm.client.js",
     "generate": "node ssr/index.js",
     "generate:markdown": "node ssr/markdown-to-elm.js",
+    "generate:sitemap": "node ssr/sitemap.js",
     "rm:dist": "rm -rf dist || true",
     "cp:public": "cp -r public/* dist"
   },
