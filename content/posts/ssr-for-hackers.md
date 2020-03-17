@@ -268,7 +268,7 @@ When it comes time to call `elm make`, `src/Main/Ssr.elm` is used by NodeJS to g
 
 That results in something like this:
 
-![A slick 98/100/100/100 google lighthouse raiting, because this page is blazing fast and accessible bro](/rhg-dev-lighthouse-audit.png)
+![A slick 98/100/100/100 google lighthouse raiting, because this page is blazing fast and accessible bro](/images/rhg-dev-lighthouse-audit.png)
 
 ### want more detail?
 
