@@ -88,7 +88,7 @@ When the JavaScript on the page loads, Elm renders this under the hood:
 
 If we wanted to write Elm code that rendered on the server, we'd need a way to render the HTML data structure as a string on the backend. The `elm/html` package wasn't designed for folks to do things like this, so we'll need to roll our own shady garbage.
 
-For this experiment, we can create our own **custom type** to capture the types of HTML elements we want to render!
+For this experiment, we can create our own __custom type__ to capture the types of HTML elements we want to render!
 
 ```elm
 type Html msg

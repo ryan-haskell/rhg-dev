@@ -13,7 +13,7 @@ someone reached out to me recently about how i generated Elm code with Elm for [
 
 #### designing for the elm community?
 
-**Code generation is neat, but having a well-designed package is a better outcome!** Elm folks can easily understand functions and data types over your custom library.
+__Code generation is neat, but having a well-designed package is a better outcome!__ Elm folks can easily understand functions and data types over your custom library.
 
 
 ### creating the elm project
@@ -185,7 +185,7 @@ Let's upgrade our existing app piece by piece to support this.
 
 #### but first!
 
-Something I did **not** do when writing the elm-spa code generator was use `elm-test`. That was stupid, I feel stupid. Now I come back to my code and am very spooked.
+Something I did __not__ do when writing the elm-spa code generator was use `elm-test`. That was stupid, I feel stupid. Now I come back to my code and am very spooked.
 
 I'm not much of a unit testing kinda guy, but holy boy I should have written tests for these things because i forgot how they worked like a week later.
 
@@ -308,7 +308,7 @@ node index.js
 
 We should see this printed out in the console:
 
-```sh
+```
 module Route exposing (routes)
 
 import Url.Parser as Parser exposing (Parser)
@@ -480,7 +480,7 @@ const app = Elm.Main.init({
 
 And run the latest code, we should see the console print out this:
 
-```sh
+```
 module Route exposing (routes)
 
 import Url.Parser as Parser exposing (Parser)
