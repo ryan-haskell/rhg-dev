@@ -9,7 +9,7 @@ image: https://rhg.dev/rhg-dev-lighthouse-audit.png
 
 So back in the day, javascript didn't have a bunch of cool frameworks. most people used [jquery](https://jquery.com/), and avoided JS as much as humanly possible.
 
-when someone made a request to a website:
+When someone made a request to a website:
 
 1. The server saw a path like `/posts/hello`
 2. It fetched all the content from a database or something
@@ -28,7 +28,7 @@ So before any javascript even ran, you'd get something like this back:
 </html>
 ```
 
-and that was it! Rendering the content on the server is called "server side rendering".
+And that was it! Rendering the content on the server is called "server side rendering".
 But holy boy times have changed and things got a whole lot more bizarre.
 
 ### client-side rendering?
@@ -86,9 +86,7 @@ When the JavaScript on the page loads, Elm renders this under the hood:
 - Functions like `div`, `h1`, and `h2` take in a list of attributes followed by a list of children.
 - Functions like `text` just take a String and render it to the DOM.
 
-If we wanted to write Elm code that rendered on the server, we'd need a way to render the
-HTML data structure as a string on the backend. The `elm/html` package wasn't designed for
-folks to do things like this, so we'll need to roll our own shady garbage.
+If we wanted to write Elm code that rendered on the server, we'd need a way to render the HTML data structure as a string on the backend. The `elm/html` package wasn't designed for folks to do things like this, so we'll need to roll our own shady garbage.
 
 For this experiment, we can create our own **custom type** to capture the types of HTML elements we want to render!
 
@@ -107,7 +105,7 @@ Here we say Html is one of two things:
 
 In a file at `src/Ssr/Html.elm` let's build an API on top of that data structure:
 
-```elmo
+```elm
 module Ssr.Html exposing
   ( Html
   , node, div, h1, h2
@@ -124,7 +122,7 @@ type Html msg
 node : String -> List (Attribute msg) -> List (Html msg) -> Html msg
 node =
   Node
-  
+
 div : List (Attribute msg) -> List (Html msg) -> Html msg
 div =
   node "div"
@@ -144,7 +142,7 @@ text =
 
 We'll also need to define `src/Ssr/Attributes.elm` to support adding attributes and events:
 
-```elmo
+```elm
 module Ssr.Attributes exposing
   ( Attribute
   , attribute, id, class
@@ -180,8 +178,7 @@ onClick msg =
 
 ### aaaand... it's useless.
 
-With this API, we're able to write HTML that looks just like `elm/html`, the only difference
-is we need to update our import statement to use the new module:
+With this API, we're able to write HTML that looks just like `elm/html`, the only difference is we need to update our import statement to use the new module:
 
 
 ```elm
@@ -241,8 +238,7 @@ toHtml html =
       Core.text string
 ```
 
-Now we can have two entrpoints to our app, `src/Main/Ssr.elm` and `src/Main/Client.elm` that reuse that same
-`Ssr.Html` markup for different outputs:
+Now we can have two entrpoints to our app, `src/Main/Ssr.elm` and `src/Main/Client.elm` that reuse that same `Ssr.Html` markup for different outputs:
 
 ```elm
 module Main.Ssr exposing (main)
@@ -272,6 +268,6 @@ That results in something like this:
 
 ### want more detail?
 
-You can check out the source code on github: [https://github.com/ryannhg/rhg-dev](https://github.com/ryannhg/rhg-dev)
+You can check out the source code on GitHub: [https://github.com/ryannhg/rhg-dev](https://github.com/ryannhg/rhg-dev)
 
 Thanks for reading!

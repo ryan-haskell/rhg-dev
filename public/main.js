@@ -1,8 +1,28 @@
 window.addEventListener('load', () => {
+
+  // Define custom element
+  class HljsPre extends HTMLElement {
+    constructor () {
+      super()
+    }
+    connectedCallback () {
+      const lang = this.getAttribute('class')
+      const value = this.getAttribute('value')
+
+      const code = document.createElement('code')
+      code.innerHTML = value
+      code.setAttribute('class', lang)
+
+      this.appendChild(code)
+    }
+  }
+  customElements.define('hljs-pre', HljsPre);
+
+  // Initialize Elm app
   const app = Elm.Main.Client.init()
 
   // Highlight blocks
-  document.querySelectorAll('pre code').forEach(hljs.highlightBlock)
+  document.querySelectorAll('hljs-pre code').forEach(hljs.highlightBlock)
 
   // Ports
   app.ports.afterNavigate.subscribe(meta =>
@@ -35,7 +55,7 @@ window.addEventListener('load', () => {
       ], meta.image)
 
       // Highlight code blocks
-      document.querySelectorAll('pre code').forEach(hljs.highlightBlock)
+      document.querySelectorAll('hljs-pre code').forEach(hljs.highlightBlock)
 
       // Scroll to top
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })

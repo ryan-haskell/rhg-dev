@@ -61,10 +61,32 @@ renderer =
     , orderedList = \_ items -> Html.ol [] (List.map (Html.li []) items)
     , codeBlock =
         \{ body, language } ->
-            Html.pre []
-                [ Html.code
-                    (language |> Maybe.map (\lang -> [ Attr.class ("lang-" ++ lang) ]) |> Maybe.withDefault [])
-                    [ Html.text body ]
-                ]
+            case language of
+                Just lang ->
+                    Html.node "hljs-pre"
+                        [ Attr.class ("lang-" ++ lang)
+                        , Attr.attribute "value" (htmlEncode body)
+                        ]
+                        []
+
+                Nothing ->
+                    Html.pre []
+                        [ Html.code
+                            (language |> Maybe.map (\lang -> [ Attr.class ("lang-" ++ lang) ]) |> Maybe.withDefault [])
+                            [ Html.text body ]
+                        ]
     , thematicBreak = Html.hr [] []
     }
+
+
+htmlEncode : String -> String
+htmlEncode str =
+    List.foldl
+        (\( unsafe, safe ) -> String.replace unsafe safe)
+        str
+        [ ( "&", "&amp;" )
+        , ( "<", "&lt;" )
+        , ( ">", "&gt;" )
+        , ( "'", "&apos;" )
+        , ( "\"", "&quot;" )
+        ]
