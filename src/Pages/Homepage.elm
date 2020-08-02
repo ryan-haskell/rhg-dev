@@ -17,20 +17,18 @@ view =
     , body =
         [ div [ class "column spacing-2" ]
             [ div [ class "column" ]
-                [ h1 [] [ text "hi, i'm ryan." ]
-                , h2 [] [ text "and you're yourself, how nice!" ]
+                [ h1 [] [ text "hey, i'm ryan." ]
+                , h2 [] [ text "welcome to here!" ]
                 ]
             , div [ class "column spacing-1" ]
                 [ markdown """
-### welcome to here
-
 My name is Ryan Haskell-Glatz, and I'm a web developer from Chicago.
 This site is where I share random projects I've been working on.
 
 I tried to make it with Comic Sans, but that fell apart very quickly.
 
 I usually write about design, elm, and side projects.
-If you're interested in that kind of thing, you should check out
+If you're interested in that sort of thing, you should check out
 my blog posts!
 
 ### latest posts
