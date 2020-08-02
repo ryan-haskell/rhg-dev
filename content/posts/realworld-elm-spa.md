@@ -1,12 +1,14 @@
 ---
-title: Building a RealWorld App with elm-spa
+title: a realworld app with elm-spa
 date: 1596388686780
-description: An example of how to use elm-spa for a real app!
+description: how I used elm-spa for a real thing!
 image: /images/realworld-homepage.png
 tags: [ "elm", "elm-spa" ]
 ---
 
-A few weeks ago, I released a new version of __elm-spa__, a tool that makes building single-page applications with Elm easier! If you're new to elm-spa, you should check out the [official guide](https://elm-spa.dev/guide)! If you're new to Elm, there's an [official guide](https://elm-spa) for that too!
+A few weeks ago, I released a new version of __elm-spa__, a tool that makes building single-page applications with Elm easier! 
+
+If you're new to elm-spa, you should check out the [official elm-spa guide](https://elm-spa.dev/guide)! If you're new to Elm, there's an [official Elm guide](https://guide.elm-lang.org) for that too!
 
 Long before there was elm-spa, there was a popular GitHub repo created by Richard Feldman called [elm-spa-example](https://github.com/rtfeldman/elm-spa-example) that provided beginners with a real world example of how to make an application with Elm! It wasn't just a TodoMVC app- it actually had things like API requests, user authentication, local storage and more!
 
