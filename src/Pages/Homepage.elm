@@ -37,7 +37,7 @@ my blog posts!
                 , markdown """
 ### other places
 
-I'm not much of a social media guy, but if you'd like you can follow me on [github](https://www.github.com/ryannhg) or [twitter](https://www.twitter.com/ryan_nhg).
+I'm not much of a social media guy, but if you'd like you can follow me on [github](https://www.github.com/ryannhg) or [twitter](https://www.twitter.com/rhg_dev).
 But I also have links for those like two inches below this paragraph (just in case)!
 """
                 ]
