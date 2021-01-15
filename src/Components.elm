@@ -80,7 +80,7 @@ footer =
 externalLinks : List ( String, String )
 externalLinks =
     [ ( "github", "https://www.github.com/ryannhg" )
-    , ( "twitter", "https://www.twitter.com/ryan_nhg" )
+    , ( "twitter", "https://www.twitter.com/rhg_dev" )
     ]
 
 
